@@ -1,0 +1,9 @@
+{
+  "name": "PB PROJEKT",
+  "short_name": "PB PROJEKT",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2f59f0",
+  "icons": []
+}
