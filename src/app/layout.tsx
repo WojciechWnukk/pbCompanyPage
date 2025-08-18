@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
+import { Header } from '../app/site/header'
+import ClientTransition from './site/client-transition'
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pbprojekt.lublin.pl'),
@@ -9,6 +13,13 @@ export const metadata: Metadata = {
   },
   description:
     'PB PROJEKT Sp. z o.o. – projektowanie, budowa i utrzymanie instalacji elektrycznych i teletechnicznych. Lublin, ul. Długa 5/142, tel. +48 574 001 545.',
+  openGraph: {
+    type: 'website',
+    siteName: 'PB PROJEKT',
+    title: 'PB PROJEKT – Instalacje elektryczne i teletechniczne',
+    description: 'Projektowanie, wykonawstwo i utrzymanie instalacji elektrycznych i teletechnicznych.',
+  },
+  alternates: { canonical: '/' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -16,29 +27,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pl">
       <body className="antialiased text-gray-900 bg-white">
         <Header />
-        {children}
+          <ClientTransition>{children}</ClientTransition>
         <Footer />
+        {/* LocalBusiness JSON-LD for SEO */}
+        <Script id="ld-localbusiness" type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'PB PROJEKT Sp. z o.o.',
+              url: 'https://pbprojekt.lublin.pl',
+              email: 'biuro@pbprojekt.lublin.pl',
+              telephone: '+48 574001545',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'ul. Długa 5/142',
+                postalCode: '20-346',
+                addressLocality: 'Lublin',
+                addressCountry: 'PL',
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   )
 }
 
-function Header() {
-  return (
-    <header className="header-glass">
-      <div className="wrap flex items-center justify-between py-3 md:py-4">
-        <a href="/" className="font-semibold tracking-tight">PB PROJEKT</a>
-        <nav className="hidden md:flex items-center gap-8 text-sm text-gray-700">
-          <a href="#uslugi" className="hover:text-gray-900">Usługi</a>
-          <a href="#o-nas" className="hover:text-gray-900">O nas</a>
-          <a href="#realizacje" className="hover:text-gray-900">Realizacje</a>
-          <a href="#kontakt" className="hover:text-gray-900">Kontakt</a>
-        </nav>
-        <a href="#kontakt" className="btn btn-primary text-sm">Skontaktuj się</a>
-      </div>
-    </header>
-  )
-}
 
 function Footer() {
   return (

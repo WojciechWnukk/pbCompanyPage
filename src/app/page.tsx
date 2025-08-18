@@ -1,91 +1,98 @@
-import { Building2, Cable, ShieldCheck, Wrench } from 'lucide-react'
+import type { Metadata } from 'next'
+import { FadeUp, Reveal } from '../app/ui/motion'
+import Counter from '../app/ui/counter'
+
+export const metadata: Metadata = {
+  title: 'Projektowanie instalacji elektrycznych, teletechnicznych i OZE',
+  description:
+    'Biuro projektowe: elektroenergetyka, teletechnika, telekomunikacja i OZE. Od koncepcji po dokumentację. 10+ lat doświadczenia.',
+}
 
 export default function HomePage() {
   return (
     <main>
-      {/* HERO */}
-      <section className="section">
-        <div className="wrap grid items-center gap-12 lg:gap-16 md:grid-cols-2">
-          <div className="max-w-2xl">
-            <h1 className="h1">Projektowanie i wykonawstwo instalacji elektrycznych i teletechnicznych</h1>
-            <p className="p mt-5">
-              Kompleksowo realizujemy projekty: od koncepcji i uzgodnień, przez dokumentację, wykonawstwo i pomiary, po serwis i utrzymanie.
-            </p>
+      <section className="section bg-gradient-to-b from-gray-50 to-white">
+        <div className="wrap grid items-center gap-10 md:grid-cols-2">
+          <FadeUp className="max-w-2xl">
+            <h1 className="h1">Projektowanie instalacji elektrycznych, teletechnicznych i OZE</h1>
+            <p className="p mt-4">Kompletne opracowania dla inwestycji budowlanych i infrastrukturalnych – od koncepcji do dokumentacji wykonawczej.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#kontakt" className="btn btn-primary">Wyceń projekt</a>
-              <a href="#uslugi" className="btn">Zobacz usługi</a>
+              <a href="/uslugi" className="btn">Zobacz usługi</a>
             </div>
-          </div>
-          <div>
-            <div className="card p-6 md:p-8">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm">
-                <li className="flex items-center gap-3"><ShieldCheck className="w-5 h-5 shrink-0" /> Uzgodnienia i nadzory</li>
-                <li className="flex items-center gap-3"><Building2 className="w-5 h-5 shrink-0" /> Projekty budowlane i wykonawcze</li>
-                <li className="flex items-center gap-3"><Cable className="w-5 h-5 shrink-0" /> Instalacje elektryczne i teletechniczne</li>
-                <li className="flex items-center gap-3"><Wrench className="w-5 h-5 shrink-0" /> Pomiary i utrzymanie</li>
-              </ul>
-            </div>
-          </div>
+          </FadeUp>
+
+          <FadeUp>
+  <div className="card p-6 md:p-8">
+    <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
+      <li>
+        <Counter value={10} suffix="+" className="text-2xl font-semibold" />
+        <div className="text-sm text-gray-600">lat doświadczenia</div>
+      </li>
+      <li>
+        <Counter value={1000} suffix="+" className="text-2xl font-semibold" />
+        <div className="text-sm text-gray-600">projektów</div>
+      </li>
+      <li>
+        <Counter value={50} suffix="+ MW" className="text-2xl font-semibold" />
+        <div className="text-sm text-gray-600">w OZE</div>
+      </li>
+      <li>
+        <span className="text-2xl font-semibold">PL</span>
+        <div className="text-sm text-gray-600">działamy w całym kraju</div>
+      </li>
+    </ul>
+  </div>
+</FadeUp>
         </div>
       </section>
 
-      {/* USŁUGI */}
-      <section id="uslugi" className="section bg-gray-50 scroll-mt-28">
+      {/* Skrót usług z animacją przy przewijaniu */}
+      <section id="services" className="section bg-gray-50">
         <div className="wrap">
-          <h2 className="h2 mb-8">Usługi</h2>
+          <h2 className="h2 mb-8">Co robimy</h2>
           <div className="grid gap-6 md:grid-cols-3">
-            {services.map((s) => (
-              <article key={s.title} className="card p-6 hover:shadow-md transition-shadow">
-                <s.icon className="w-6 h-6" />
-                <h3 className="font-semibold text-lg mt-4">{s.title}</h3>
-                <p className="p mt-2">{s.desc}</p>
-              </article>
+            {services.map((s, idx) => (
+              <Reveal key={s.t} delay={idx * 0.05}>
+                <a href="/uslugi" className="card p-6 hover:shadow-md transition-shadow block">
+                  <h3 className="font-semibold text-lg">{s.t}</h3>
+                  <p className="p mt-2">{s.d}</p>
+                  <span className="inline-block mt-4 text-sm text-gray-700 underline">Więcej →</span>
+                </a>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* O NAS */}
-      <section id="o-nas" className="section scroll-mt-28">
+      {/* Realizacje – zajawka z animacją */}
+      <section className="section">
         <div className="wrap">
-          <h2 className="h2 mb-4">O nas</h2>
-          <p className="p max-w-3xl">
-            PB PROJEKT Sp. z o.o. działa w branży elektrycznej i teletechnicznej, realizując prace dla biur architektonicznych,
-            sektora publicznego, operatorów energetycznych i telekomunikacyjnych oraz przemysłu. Dostarczamy dokumentację projektową,
-            wykonujemy instalacje i prowadzimy okresowe pomiary.
-          </p>
-        </div>
-      </section>
-
-      {/* REALIZACJE */}
-      <section id="realizacje" className="section bg-gray-50 scroll-mt-28">
-        <div className="wrap">
-          <h2 className="h2 mb-8">Wybrane realizacje</h2>
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <h2 className="h2">Wybrane realizacje</h2>
+            <a href="/realizacje" className="text-sm underline">Zobacz wszystkie</a>
+          </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {['Modernizacja rozdzielni nN', 'Instalacja teletechniczna w biurowcu', 'Oświetlenie LED – modernizacja'].map((t, i) => (
-              <article key={i} className="card p-6">
-                <div className="aspect-video rounded-xl bg-gray-100" />
-                <h3 className="font-semibold mt-4">{t}</h3>
-                <p className="p">Opis skrócony realizacji – do podmiany po migracji treści.</p>
-              </article>
+            {projects.map((t, i) => (
+              <Reveal key={i} delay={i * 0.06}>
+                <article className="card p-6">
+                  <div className="aspect-video rounded-xl bg-gray-100" />
+                  <h3 className="font-semibold mt-4">{t}</h3>
+                  <p className="p">Opis skrócony realizacji – do podmiany.</p>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* KONTAKT */}
-      <section id="kontakt" className="section scroll-mt-28">
+      {/* Kontakt – CTA */}
+      <section id="kontakt" className="section bg-gray-50">
         <div className="wrap grid gap-10 md:grid-cols-2">
           <div>
             <h2 className="h2 mb-4">Skontaktuj się</h2>
-            <p className="p">
-              PB PROJEKT Sp. z o.o.<br />ul. Długa 5/142, 20-346 Lublin<br />
-              NIP: 712-333-86-74 • REGON: 367142106
-            </p>
-            <p className="p mt-2">
-              E-mail: <a className="underline" href="mailto:wojti767@gmail.com">biuro@pbprojekt.lublin.pl</a><br />
-              Telefon: <a className="underline" href="tel:+48574001545">+48 574 001 545</a>
-            </p>
+            <p className="p">PB PROJEKT Sp. z o.o.<br/>ul. Długa 5/142, 20-346 Lublin<br/>NIP: 712-333-86-74 • REGON: 367142106</p>
+            <p className="p mt-2">E-mail: <a className="underline" href="mailto:biuro@pbprojekt.lublin.pl">biuro@pbprojekt.lublin.pl</a><br/>Telefon: <a className="underline" href="tel:+48574001545">+48 574 001 545</a></p>
           </div>
           <ContactForm />
         </div>
@@ -95,9 +102,15 @@ export default function HomePage() {
 }
 
 const services = [
-  { title: 'Projektowanie elektryczne', desc: 'Projekty budowlane i wykonawcze instalacji elektrycznych nN/SN, dobór urządzeń, bilanse mocy.', icon: Building2 },
-  { title: 'Teletechnika i SSP', desc: 'Okablowanie strukturalne, CCTV, SSWiN, KD, systemy SAP/DSO, okablowanie światłowodowe.', icon: Cable },
-  { title: 'Pomiary i utrzymanie', desc: 'Pomiary ochronne, protokoły, przeglądy okresowe, serwis i modernizacje instalacji.', icon: Wrench },
+  { t: 'Elektroenergetyka', d: 'Sieci i instalacje nN/SN/WN, stacje, rozdzielnie, przyłącza.' },
+  { t: 'Teletechnika i telekomunikacja', d: 'Światłowody, CCTV, KD, SSWiN, SAP/DSO i automatyka.' },
+  { t: 'Odnawialne Źródła Energii', d: 'Farmy PV i wiatrowe, magazyny energii, wyprowadzenie mocy.' },
+]
+
+const projects = [
+  'Modernizacja rozdzielni nN',
+  'Instalacja teletechniczna w biurowcu',
+  'Oświetlenie LED – modernizacja',
 ]
 
 function ContactForm() {

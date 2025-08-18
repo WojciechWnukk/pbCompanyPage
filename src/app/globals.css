@@ -20,3 +20,25 @@ html, body { height: 100%; }
 .btn-primary { @apply bg-blue-600 text-white border-blue-600 hover:bg-blue-700; }
 
 .header-glass { @apply sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-gray-100; }
+
+/* Kicker (eyebrow) + lead */
+.kicker { @apply text-xs uppercase tracking-wider text-blue-600 font-semibold; }
+.lead { @apply text-lg text-gray-600; }
+
+/* Listy z ikoną po lewej (użyte na podstronach) */
+.list-icon { @apply space-y-2; }
+.list-icon li { @apply flex items-start gap-3 text-gray-700; }
+.list-icon svg { @apply w-5 h-5 mt-1 text-blue-600 shrink-0; }
+
+/* Sekcje nagłówkowe dla podstron */
+.subhero {
+  @apply bg-gradient-to-b from-gray-50 to-white
+         pt-14 md:pt-20   /* góra */
+         pb-6  md:pb-8;   /* ↓ było zbyt duże, zmniejszamy */
+}
+
+/* Pierwsza sekcja po sub-hero – ciaśniejszy top */
+.after-hero {
+  @apply pt-8 md:pt-10    /* ↓ zamiast dużego pt z .section */
+          pb-16 md:pb-20; /* dół może zostać większy */
+}
