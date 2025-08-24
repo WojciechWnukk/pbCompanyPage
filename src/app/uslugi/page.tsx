@@ -44,7 +44,7 @@ export default function ServicesPage() {
               <p className="p">
                 Zleć nam projekt i zyskaj pewność, że inwestycja będzie dopracowana w każdym detalu – od koncepcji po finalną dokumentację.
               </p>
-              <a href="#kontakt" className="btn btn-primary mt-5 w-fit">Skontaktuj się</a>
+              <a href="/kontakt" className="btn btn-primary mt-5 w-fit">Skontaktuj się</a>
             </aside>
           </Reveal>
         </div>

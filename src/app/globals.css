@@ -5,40 +5,40 @@
 :root { color-scheme: light; }
 html, body { height: 100%; }
 
-/* Layout helpers */
 .wrap { @apply mx-auto w-full max-w-7xl px-4 md:px-6; }
 .section { @apply py-20 md:py-28; }
 
-/* Typography */
 .h1 { @apply text-4xl md:text-6xl font-bold tracking-tight leading-tight; }
 .h2 { @apply text-2xl md:text-3xl font-semibold; }
 .p  { @apply text-base leading-relaxed text-gray-600; }
 
-/* UI */
 .card { @apply rounded-2xl border border-gray-200 bg-white shadow-sm; }
 .btn { @apply inline-flex items-center gap-2 rounded-xl px-5 py-3 font-medium border border-gray-200 hover:bg-gray-50 transition; }
-.btn-primary { @apply bg-blue-600 text-white border-blue-600 hover:bg-blue-700; }
-
-.header-glass { @apply sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-gray-100; }
-
-/* Kicker (eyebrow) + lead */
-.kicker { @apply text-xs uppercase tracking-wider text-blue-600 font-semibold; }
-.lead { @apply text-lg text-gray-600; }
-
-/* Listy z ikoną po lewej (użyte na podstronach) */
-.list-icon { @apply space-y-2; }
-.list-icon li { @apply flex items-start gap-3 text-gray-700; }
-.list-icon svg { @apply w-5 h-5 mt-1 text-blue-600 shrink-0; }
-
-/* Sekcje nagłówkowe dla podstron */
-.subhero {
-  @apply bg-gradient-to-b from-gray-50 to-white
-         pt-14 md:pt-20   /* góra */
-         pb-6  md:pb-8;   /* ↓ było zbyt duże, zmniejszamy */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-2xl px-5 py-3
+         font-medium text-white bg-brand-600 hover:bg-brand-700
+         transition active:translate-y-[1px];
 }
 
-/* Pierwsza sekcja po sub-hero – ciaśniejszy top */
+.btn-secondary {
+  @apply bg-white text-slate-900 border border-slate-300 hover:bg-slate-50 hover:border-slate-400 shadow-sm;
+}
+.header-glass { @apply sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-gray-100; }
+
+.kicker { @apply text-xs uppercase tracking-wider text-brand-600 font-semibold; }
+.lead   { @apply text-lg text-gray-600; }
+
+.list-icon { @apply space-y-2; }
+.list-icon li  { @apply flex items-start gap-3 text-gray-700; }
+.list-icon svg { @apply w-5 h-5 mt-1 text-brand-600 shrink-0; }
+
+.subhero {
+  @apply bg-gradient-to-b from-gray-50 to-white
+         pt-14 md:pt-20
+         pb-6  md:pb-8;
+}
+
 .after-hero {
-  @apply pt-8 md:pt-10    /* ↓ zamiast dużego pt z .section */
-          pb-16 md:pb-20; /* dół może zostać większy */
+  @apply pt-8 md:pt-10
+          pb-16 md:pb-20;
 }

@@ -17,7 +17,7 @@ export function StepsList({ steps }: { steps: Step[] }) {
           className="relative pt-1"
           variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
         >
-          <span className="absolute -left-4 md:-left-10 top-0 grid h-7 w-7 place-items-center rounded-full bg-blue-600 text-white text-xs">
+          <span className="absolute -left-4 md:-left-10 top-0 grid h-7 w-7 place-items-center rounded-full bg-brand-600 text-white text-xs">
             {i + 1}
           </span>
           <h3 className="font-semibold leading-tight">{t}</h3>

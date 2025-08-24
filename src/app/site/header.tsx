@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 const LINKS = [
   { href: '/uslugi', label: 'Usługi' },
@@ -30,7 +31,17 @@ export function Header() {
   return (
     <header className="header-glass">
       <div className="wrap flex items-center justify-between py-3 md:py-4">
-        <Link href="/" className="font-semibold tracking-tight">PB PROJEKT</Link>
+                <Link href="/" className="flex items-center gap-2 min-w-[150px]">
+          <Image
+            src="/brand/logo.png"
+            alt="PB PROJEKT"
+            width={150}
+            height={32}
+            priority
+            className="h-8 w-auto"
+          />
+          <span className="sr-only">PB PROJEKT</span>
+        </Link>
 
         {/* desktop */}
         <nav className="hidden md:flex items-center gap-8">

@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  // Nie rób nic w dev
   if (process.env.NODE_ENV !== 'production') return NextResponse.next()
 
   const url = req.nextUrl

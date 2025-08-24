@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { FadeUp, Reveal } from '../app/ui/motion'
 import Counter from '../app/ui/counter'
+import Image from 'next/image'
+import ContactForm from './ui/contact-form'
+
 
 export const metadata: Metadata = {
   title: 'Projektowanie instalacji elektrycznych, teletechnicznych i OZE',
@@ -12,38 +15,55 @@ export default function HomePage() {
   return (
     <main>
       <section className="section bg-gradient-to-b from-gray-50 to-white">
-        <div className="wrap grid items-center gap-10 md:grid-cols-2">
+        {/* TŁO */}
+        <div aria-hidden className="absolute inset-0 z-0">
+          <Image
+            src="/pv2.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[75%_center] md:object-[65%_center]"
+          />
+          {/* overlay dla czytelności */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 md:via-white/60 to-transparent" />
+        </div>
+        <div className="relative z-10 wrap grid items-center gap-10 md:grid-cols-2">
           <FadeUp className="max-w-2xl">
-            <h1 className="h1">Projektowanie instalacji elektrycznych, teletechnicznych i OZE</h1>
-            <p className="p mt-4">Kompletne opracowania dla inwestycji budowlanych i infrastrukturalnych – od koncepcji do dokumentacji wykonawczej.</p>
+            <h1 className="h1">
+              Projektowanie instalacji elektrycznych, teletechnicznych i OZE
+            </h1>
+            <p className="p mt-4">
+              Kompletne opracowania dla inwestycji budowlanych i infrastrukturalnych – od koncepcji do dokumentacji wykonawczej.
+            </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#kontakt" className="btn btn-primary">Wyceń projekt</a>
-              <a href="/uslugi" className="btn">Zobacz usługi</a>
+              <a href="/uslugi" className="btn btn-secondary">Zobacz usługi</a>
             </div>
           </FadeUp>
 
           <FadeUp>
-  <div className="card p-6 md:p-8">
-    <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
-      <li>
-        <Counter value={10} suffix="+" className="text-2xl font-semibold" />
-        <div className="text-sm text-gray-600">lat doświadczenia</div>
-      </li>
-      <li>
-        <Counter value={1000} suffix="+" className="text-2xl font-semibold" />
-        <div className="text-sm text-gray-600">projektów</div>
-      </li>
-      <li>
-        <Counter value={50} suffix="+ MW" className="text-2xl font-semibold" />
-        <div className="text-sm text-gray-600">w OZE</div>
-      </li>
-      <li>
-        <span className="text-2xl font-semibold">PL</span>
-        <div className="text-sm text-gray-600">działamy w całym kraju</div>
-      </li>
-    </ul>
-  </div>
-</FadeUp>
+            <div className="card p-6 md:p-8">
+              <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 text-center">
+                <li>
+                  <Counter value={10} suffix="+" className="text-2xl font-semibold" />
+                  <div className="text-sm text-gray-600">lat doświadczenia</div>
+                </li>
+                <li>
+                  <Counter value={1000} suffix="+" className="text-2xl font-semibold" />
+                  <div className="text-sm text-gray-600">projektów</div>
+                </li>
+                <li>
+                  <Counter value={50} suffix="+ MW" className="text-2xl font-semibold" />
+                  <div className="text-sm text-gray-600">w OZE</div>
+                </li>
+                <li>
+                  <span className="text-2xl font-semibold">PL</span>
+                  <div className="text-sm text-gray-600">działamy w całym kraju</div>
+                </li>
+              </ul>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -87,16 +107,28 @@ export default function HomePage() {
       </section>
 
       {/* Kontakt – CTA */}
-      <section id="kontakt" className="section bg-gray-50">
-        <div className="wrap grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="h2 mb-4">Skontaktuj się</h2>
-            <p className="p">PB PROJEKT Sp. z o.o.<br/>ul. Długa 5/142, 20-346 Lublin<br/>NIP: 712-333-86-74 • REGON: 367142106</p>
-            <p className="p mt-2">E-mail: <a className="underline" href="mailto:biuro@pbprojekt.lublin.pl">biuro@pbprojekt.lublin.pl</a><br/>Telefon: <a className="underline" href="tel:+48574001545">+48 574 001 545</a></p>
-          </div>
-          <ContactForm />
-        </div>
-      </section>
+<section id="kontakt" className="section bg-gray-50">
+  <div className="wrap grid gap-10 md:grid-cols-2 items-start">
+    {/* LEWA KOLUMNA – dane firmy */}
+    <div className="md:col-start-1 md:row-start-1 md:order-1">
+      <h2 className="h2 mb-4">Skontaktuj się</h2>
+      <p className="p">
+        PB PROJEKT Sp. z o.o.<br />
+        ul. Długa 5/142, 20-346 Lublin<br />
+        NIP: 712-333-86-74 • REGON: 367142106
+      </p>
+      <p className="p mt-2">
+        E-mail: <a className="underline" href="mailto:biuro@pbprojekt.lublin.pl">biuro@pbprojekt.lublin.pl</a><br />
+        Telefon: <a className="underline" href="tel:+48574001545">+48 574 001 545</a>
+      </p>
+    </div>
+
+    {/* PRAWA KOLUMNA – formularz */}
+    <div className="md:col-start-2 md:row-start-1 md:order-2">
+      <ContactForm />
+    </div>
+  </div>
+</section>
     </main>
   )
 }
@@ -112,23 +144,3 @@ const projects = [
   'Instalacja teletechniczna w biurowcu',
   'Oświetlenie LED – modernizacja',
 ]
-
-function ContactForm() {
-  return (
-    <form action={send} className="card p-6 md:p-8">
-      <h3 className="font-semibold text-lg">Formularz kontaktowy</h3>
-      <div className="mt-4 grid gap-4">
-        <input name="name" required placeholder="Imię i nazwisko" className="border rounded-xl px-4 py-3" />
-        <input name="email" required type="email" placeholder="E-mail" className="border rounded-xl px-4 py-3" />
-        <textarea name="message" required placeholder="Wiadomość" className="border rounded-xl px-4 py-3 min-h-[120px]"></textarea>
-      </div>
-      <button className="btn btn-primary mt-4" type="submit">Wyślij</button>
-      <p className="p text-sm mt-3">Wysyłając formularz wyrażasz zgodę na kontakt w sprawie zapytania.</p>
-    </form>
-  )
-}
-
-async function send(formData: FormData) {
-  'use server'
-  console.log('Lead:', Object.fromEntries(formData.entries()))
-}
