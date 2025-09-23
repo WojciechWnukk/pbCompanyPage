@@ -10,7 +10,7 @@ const LINKS = [
   { href: '/o-nas', label: 'O nas' },
   { href: '/jak-pracujemy', label: 'Jak pracujemy' },
   { href: '/realizacje', label: 'Realizacje' },
-  { href: '/#kontakt', label: 'Kontakt', anchor: true },
+  { href: '/kontakt', label: 'Kontakt', anchor: true },
 ]
 
 export function Header() {
@@ -56,7 +56,7 @@ export function Header() {
 
         {/* CTA + hamburger */}
         <div className="flex items-center gap-3">
-          <a href="#kontakt" className="btn btn-primary text-sm hidden md:inline-flex">Skontaktuj się</a>
+          <a href="kontakt" className="btn btn-primary text-sm hidden md:inline-flex">Skontaktuj się</a>
           <button
             aria-label="Open menu"
             aria-controls="mobile-menu"
@@ -94,7 +94,7 @@ export function Header() {
                 )
               )}
             </nav>
-            <a href="#kontakt" className="btn btn-primary mt-auto">Skontaktuj się</a>
+            <a href="kontakt" className="btn btn-primary mt-auto">Skontaktuj się</a>
           </div>
         </div>
       )}

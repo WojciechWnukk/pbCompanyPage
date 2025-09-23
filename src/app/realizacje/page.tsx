@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Reveal } from '@/app/ui/motion'
 import { CheckCircle2, Zap, Network, Shield, Factory, Building2, Radio } from 'lucide-react'
+import Image from 'next/image'
+import ProjectsFilter from '@/app/site/projects-filter'
+
+
 
 export const metadata: Metadata = {
   title: 'Realizacje – PB PROJEKT',
@@ -9,11 +13,6 @@ export const metadata: Metadata = {
     'Projekty w całej Polsce – OZE, elektroenergetyka, teletechnika, telekomunikacja. Od koncepcji po dokumentację wykonawczą.',
 }
 
-const ITEMS = [
-  { t: 'Modernizacja rozdzielni nN', d: 'Opis skrócony realizacji – do uzupełnienia.' },
-  { t: 'Instalacja teletechniczna w biurowcu', d: 'Opis skrócony realizacji – do uzupełnienia.' },
-  { t: 'Oświetlenie LED – modernizacja', d: 'Opis skrócony realizacji – do uzupełnienia.' },
-]
 
 export default function ProjectsPage() {
   return (
@@ -49,13 +48,22 @@ export default function ProjectsPage() {
           </Reveal>
 
           <Reveal trigger="mount" delay={0.05}>
-            <aside className="card p-0 overflow-hidden">
-              <div className="aspect-video bg-gray-100" />
-              <div className="p-6">
-                <p className="p">Miejsce na zdjęcie/diagram OZE (PV/wiatr/magazyn energii).</p>
-              </div>
-            </aside>
-          </Reveal>
+  <aside className="card p-0 overflow-hidden">
+    <div className="relative aspect-video">
+      <Image
+        src="/img/projects/example.jpg"
+        alt="Przykładowa realizacja OZE (PV/wiatr/magazyn energii)"
+        fill
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-black/5" />
+    </div>
+    <div className="p-6">
+      <p className="p">Farma PV 5 MW — Lubelskie</p>
+    </div>
+  </aside>
+</Reveal>
         </div>
       </section>
 
@@ -132,30 +140,15 @@ export default function ProjectsPage() {
 
       {/* Wybrane realizacje */}
       <section className="section bg-gray-50">
-        <div className="wrap">
-          <div className="flex items-end justify-between gap-4 mb-6">
-            <h2 className="h2">Wybrane realizacje</h2>
-            <div className="hidden md:flex gap-2">
-              {['Wszystkie', 'Elektroenergetyka', 'Telekomunikacja', 'Teletechnika', 'OZE'].map((t, i) => (
-                <button key={t} className={`px-4 py-2 rounded-xl border ${i===0 ? 'bg-brand text-white border-brand' : 'hover:bg-gray-50'}`}>{t}</button>
-              ))}
-            </div>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {ITEMS.map((i, idx) => (
-              <Reveal key={idx} delay={idx * 0.05}>
-                <article className="card overflow-hidden">
-                  <div className="aspect-video bg-gray-100" />
-                  <div className="p-6">
-                    <h3 className="font-semibold">{i.t}</h3>
-                    <p className="p">{i.d}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+  <div className="wrap">
+    <div className="flex items-end justify-between gap-4 mb-6">
+      <h2 className="h2">Wybrane realizacje</h2>
+      {/* <a href="/realizacje" className="hidden md:inline-block text-sm underline">Zobacz wszystkie</a> */}
+    </div>
+
+    <ProjectsFilter projects={PROJECTS} defaultCat="OZE" />
+  </div>
+</section>
 
       {/* Breadcrumbs */}
       <Script id="ld-breadcrumbs-projects" type="application/ld+json"
@@ -173,3 +166,52 @@ export default function ProjectsPage() {
     </main>
   )
 }
+
+type Cat = 'OZE' | 'Elektroenergetyka' | 'Telekomunikacja' | 'Teletechnika'
+type Project = { cat: Cat; t: string; d: string; img: string; alt: string; href?: string }
+
+const PROJECTS: Project[] = [
+  // OZE (3)
+  { cat: 'OZE', t: 'Farma PV 5 MW — Lubelskie',
+    d: 'Wyprowadzenie mocy: stacja SN/nn, zabezpieczenia, telemechanika i łączność OSD.',
+    img: '/img/projects/example.jpg', alt: 'Rzędy paneli fotowoltaicznych' },
+  { cat: 'OZE', t: 'Magazyn energii 1 MWh — integracja z PV',
+    d: 'Dobór BESS, schematy AC/DC oraz algorytm pracy na styku z siecią.',
+    img: '/img/projects/example.jpg', alt: 'Kontenerowy magazyn energii' },
+  { cat: 'OZE', t: 'Farma wiatrowa — wyprowadzenie mocy',
+    d: 'Przyłącze SN, układy zabezpieczeń, telemechanika i nadzór autorski.',
+    img: '/img/projects/example.jpg', alt: 'Turbiny wiatrowe w terenie' },
+
+  // Elektroenergetyka (3)
+  { cat: 'Elektroenergetyka', t: 'Rozdzielnia nN — modernizacja',
+    d: 'Analiza obciążeń, dobór zabezpieczeń i dokumentacja wykonawcza.',
+    img: '/img/projects/example.jpg', alt: 'Wnętrze rozdzielni nN' },
+  { cat: 'Elektroenergetyka', t: 'Stacja transformatorowa SN/nn',
+    d: 'Projekt pól odpływowych, OSN, uziemienia i koordynacja zabezpieczeń.',
+    img: '/img/projects/example.jpg', alt: 'Stacja transformatorowa' },
+  { cat: 'Elektroenergetyka', t: 'Linia kablowa SN w mieście',
+    d: 'Trasa kablowa, uzgodnienia, bilans mocy i dokumentacja powykonawcza.',
+    img: '/img/projects/example.jpg', alt: 'Ułożenie linii kablowej SN' },
+
+  // Telekomunikacja (3)
+  { cat: 'Telekomunikacja', t: 'Sieć światłowodowa biurowca',
+    d: 'FTTH/FTTB, szachty teletechniczne, patch panele i oznaczenia.',
+    img: '/img/projects/example.jpg', alt: 'Patch panele światłowodowe' },
+  { cat: 'Telekomunikacja', t: 'Łączność krytyczna (rezerwowe łącza)',
+    d: 'Redundantne tory transmisji, SLA, monitoring i alerting.',
+    img: '/img/projects/example.jpg', alt: 'Urządzenia telekomunikacyjne' },
+  { cat: 'Telekomunikacja', t: 'Dosył optyczny do OSD',
+    d: 'Węzły dostępowe DWDM i integracja z telemechaniką.',
+    img: '/img/projects/example.jpg', alt: 'Światłowód w trasach kablowych' },
+
+  // Teletechnika (3)
+  { cat: 'Teletechnika', t: 'CCTV + Kontrola Dostępu',
+    d: 'Kamery 4K, KD, SSWiN, zasilanie PoE i rezerwa z UPS.',
+    img: '/img/projects/example.jpg', alt: 'Kamery CCTV na obiekcie' },
+  { cat: 'Teletechnika', t: 'SAP/DSO — obiekt publiczny',
+    d: 'Detekcja pożaru, sterowanie DSO i scenariusze pożarowe.',
+    img: '/img/projects/example.jpg', alt: 'Centrala systemu pożarowego' },
+  { cat: 'Teletechnika', t: 'Automatyka budynkowa (BMS)',
+    d: 'Integracja HVAC/elektryka, DALI i harmonogramy.',
+    img: '/img/projects/example.jpg', alt: 'Szafa automatyki' },
+]

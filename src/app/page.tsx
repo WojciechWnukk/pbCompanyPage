@@ -37,7 +37,7 @@ export default function HomePage() {
               Kompletne opracowania dla inwestycji budowlanych i infrastrukturalnych – od koncepcji do dokumentacji wykonawczej.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#kontakt" className="btn btn-primary">Wyceń projekt</a>
+              <a href="/kontakt" className="btn btn-primary">Wyceń projekt</a>
               <a href="/uslugi" className="btn btn-secondary">Zobacz usługi</a>
             </div>
           </FadeUp>
@@ -93,16 +93,32 @@ export default function HomePage() {
             <a href="/realizacje" className="text-sm underline">Zobacz wszystkie</a>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {projects.map((t, i) => (
-              <Reveal key={i} delay={i * 0.06}>
-                <article className="card p-6">
-                  <div className="aspect-video rounded-xl bg-gray-100" />
-                  <h3 className="font-semibold mt-4">{t}</h3>
-                  <p className="p">Opis skrócony realizacji – do podmiany.</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+  {projects.map((p, i) => (
+    <Reveal key={p.t} delay={i * 0.06}>
+      <article className="card p-0 overflow-hidden hover:shadow-md transition-shadow">
+        <div className="relative aspect-video">
+          <Image
+            src={p.img}
+            alt={p.alt}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="font-semibold text-lg">{p.t}</h3>
+          <p className="p mt-2">{p.d}</p>
+          {/* {p.href && (
+            <a href={p.href} className="inline-block mt-4 text-sm underline">
+              Zobacz realizację →
+            </a>
+          )} */}
+        </div>
+      </article>
+    </Reveal>
+  ))}
+</div>
+
         </div>
       </section>
 
@@ -140,7 +156,25 @@ const services = [
 ]
 
 const projects = [
-  'Modernizacja rozdzielni nN',
-  'Instalacja teletechniczna w biurowcu',
-  'Oświetlenie LED – modernizacja',
+  {
+    t: 'Farma fotowoltaiczna 5 MW – Lubelskie',
+    d: 'Projekt wyprowadzenia mocy: stacja SN/nn, zabezpieczenia, telemechanika i łączność OSD.',
+    img: '/img/projects/example.jpg',
+    alt: 'Farma fotowoltaiczna – rzędy paneli PV w terenie',
+    href: '/realizacje/oz%20e-pv-5mw-lubelskie',
+  },
+  {
+    t: 'Rozdzielnia nN w zakładzie produkcyjnym',
+    d: 'Modernizacja rozdzielni nN z analizą obciążeń i doborem zabezpieczeń.',
+    img: '/img/projects/example.jpg',
+    alt: 'Wnętrze rozdzielni elektrycznej nN – szafy i aparatura',
+    href: '/realizacje/rozdzielnia-nn-modernizacja',
+  },
+  {
+    t: 'Sieć światłowodowa dla biurowca klasy A',
+    d: 'Projekt FTTH/FTTB, szachty teletechniczne, patch panele i oznaczenia.',
+    img: '/img/projects/example.jpg',
+    alt: 'Światłowody i patch panele w szafie rack',
+    href: '/realizacje/siec-swiatlowodowa-biurowiec',
+  }
 ]

@@ -32,7 +32,7 @@ export default function ProcessPage() {
       <section className="section after-hero">
         <div className="wrap">
           <StepsList steps={STEPS} />
-          <a href="#kontakt" className="btn btn-primary mt-10">Skontaktuj się</a>
+          <a href="/kontakt" className="btn btn-primary mt-10">Skontaktuj się</a>
         </div>
       </section>
 
