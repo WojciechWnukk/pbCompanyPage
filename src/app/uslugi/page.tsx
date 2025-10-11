@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main>
-      {/* HERO */}
       <section className="subhero">
         <div className="wrap">
           <span className="kicker">Oferta</span>
@@ -72,7 +71,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* BreadcrumbList JSON-LD */}
       <Script id="ld-breadcrumbs-services" type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

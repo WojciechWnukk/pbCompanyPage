@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      {/* HERO */}
       <section className="subhero">
         <div className="wrap">
           <span className="kicker">Poznaj nas</span>
@@ -27,7 +26,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Wprowadzenie z nagłówkiem H2 (treść inwestora) */}
       <section className="section after-hero">
         <div className="wrap max-w-4xl">
           <Reveal trigger="mount">
@@ -46,7 +44,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Liczby – kafle z animowanymi licznikami */}
       <section className="section bg-gray-50">
         <div className="wrap grid gap-6 md:grid-cols-4">
           <Reveal trigger="mount"><Stat n={<Counter value={10} suffix="+" />} t="lat doświadczenia" /></Reveal>
@@ -56,7 +53,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Zakres realizacji – 2 kolumny z ikonami */}
       <section className="section">
         <div className="wrap grid md:grid-cols-2 gap-10">
           <Reveal trigger="mount">
@@ -71,7 +67,6 @@ export default function AboutPage() {
             </div>
           </Reveal>
 
-          {/* Pełny zakres usług – lista + estetyczna karta CTA */}
           <Reveal trigger="mount" delay={0.05}>
             <aside className="card p-6 md:p-8">
               <h2 className="h2 mb-2">Oferujemy pełny zakres usług projektowych</h2>
@@ -92,7 +87,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Zespół */}
       <section className="section bg-gray-50">
         <div className="wrap">
           <h3 className="h2">Siła naszej firmy tkwi w ludziach, którzy ją tworzą</h3>
@@ -113,7 +107,6 @@ export default function AboutPage() {
             Dzięki tak zorganizowanej strukturze każda inwestycja jest prowadzona sprawnie, terminowo i z dbałością o każdy szczegół – od pierwszego kontaktu z inwestorem po finalną dokumentację.
           </p>
 
-          {/* Końcowy CTA */}
           <div className="card p-6 md:p-8 mt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="font-semibold text-lg">Zleć nam projekt i zyskaj pewność, że Twoja inwestycja będzie dopracowana w każdym detalu.</h3>
@@ -124,7 +117,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Breadcrumbs schema */}
       <Script id="ld-breadcrumbs-about" type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -141,7 +133,6 @@ export default function AboutPage() {
   )
 }
 
-/** ——— Małe komponenty ——— */
 function Stat({ n, t }: { n: React.ReactNode; t: string }) {
   return (
     <div className="card p-6 text-center">

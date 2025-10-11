@@ -17,7 +17,6 @@ export function Header() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
-  // zamknij po zmianie ścieżki
   useEffect(() => { setOpen(false) }, [pathname])
 
   const isActive = (href: string, anchor?: boolean) =>
@@ -43,7 +42,6 @@ export function Header() {
           <span className="sr-only">PB PROJEKT</span>
         </Link>
 
-        {/* desktop */}
         <nav className="hidden md:flex items-center gap-8">
           {LINKS.map(l => (
             l.anchor ? (

@@ -27,7 +27,6 @@ export default function ProjectsFilter({
 
   return (
     <div>
-      {/* PRZYCISKI KATEGORII */}
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 mb-6">
         {(Object.keys(CAT_META) as Cat[]).map((c) => {
           const { label, Icon } = CAT_META[c]
@@ -47,7 +46,6 @@ export default function ProjectsFilter({
         })}
       </div>
 
-      {/* SIATKA PROJEKTÓW */}
       <div className="grid gap-6 md:grid-cols-3">
         {list.map((p, i) => (
           <Reveal key={p.t} delay={i * 0.05} trigger="mount">

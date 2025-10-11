@@ -5,7 +5,6 @@ import { sendMail } from '../lib/mail'
 const esc = (s: string) => s.replace(/[<>&'"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&#39;','"':'&quot;'}[c]!))
 
 export async function sendContact(prevState: any, formData: FormData) {
-  // honeypot
   if (String(formData.get('website') || '').trim()) return { ok: true }
 
   const name = String(formData.get('name') || '').trim()

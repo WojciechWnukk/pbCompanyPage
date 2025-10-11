@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main>
-      {/* HERO */}
       <section className="subhero">
         <div className="wrap">
           <span className="kicker">Realizacje</span>
@@ -28,7 +27,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* OZE */}
       <section className="section after-hero">
         <div className="wrap grid md:grid-cols-2 gap-10 items-start">
           <Reveal trigger="mount">
@@ -67,7 +65,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Energetyka / Telekomunikacja / Teletechnika */}
       <section className="section bg-gray-50">
         <div className="wrap">
           <h2 className="h2 mb-6">Energetyka, teletechnika, telekomunikacja</h2>
@@ -103,7 +100,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Część ogólna + Dla kogo */}
       <section className="section">
         <div className="wrap grid md:grid-cols-2 gap-10 items-start">
           <Reveal trigger="mount">
@@ -138,7 +134,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Wybrane realizacje */}
       <section className="section bg-gray-50">
   <div className="wrap">
     <div className="flex items-end justify-between gap-4 mb-6">
@@ -150,7 +145,6 @@ export default function ProjectsPage() {
   </div>
 </section>
 
-      {/* Breadcrumbs */}
       <Script id="ld-breadcrumbs-projects" type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -171,7 +165,6 @@ type Cat = 'OZE' | 'Elektroenergetyka' | 'Telekomunikacja' | 'Teletechnika'
 type Project = { cat: Cat; t: string; d: string; img: string; alt: string; href?: string }
 
 const PROJECTS: Project[] = [
-  // OZE (3)
   { cat: 'OZE', t: 'Farma PV 5 MW — Lubelskie',
     d: 'Wyprowadzenie mocy: stacja SN/nn, zabezpieczenia, telemechanika i łączność OSD.',
     img: '/img/projects/example.jpg', alt: 'Rzędy paneli fotowoltaicznych' },
@@ -182,7 +175,6 @@ const PROJECTS: Project[] = [
     d: 'Przyłącze SN, układy zabezpieczeń, telemechanika i nadzór autorski.',
     img: '/img/projects/example.jpg', alt: 'Turbiny wiatrowe w terenie' },
 
-  // Elektroenergetyka (3)
   { cat: 'Elektroenergetyka', t: 'Rozdzielnia nN — modernizacja',
     d: 'Analiza obciążeń, dobór zabezpieczeń i dokumentacja wykonawcza.',
     img: '/img/projects/example.jpg', alt: 'Wnętrze rozdzielni nN' },
@@ -193,7 +185,6 @@ const PROJECTS: Project[] = [
     d: 'Trasa kablowa, uzgodnienia, bilans mocy i dokumentacja powykonawcza.',
     img: '/img/projects/example.jpg', alt: 'Ułożenie linii kablowej SN' },
 
-  // Telekomunikacja (3)
   { cat: 'Telekomunikacja', t: 'Sieć światłowodowa biurowca',
     d: 'FTTH/FTTB, szachty teletechniczne, patch panele i oznaczenia.',
     img: '/img/projects/example.jpg', alt: 'Patch panele światłowodowe' },
@@ -204,7 +195,6 @@ const PROJECTS: Project[] = [
     d: 'Węzły dostępowe DWDM i integracja z telemechaniką.',
     img: '/img/projects/example.jpg', alt: 'Światłowód w trasach kablowych' },
 
-  // Teletechnika (3)
   { cat: 'Teletechnika', t: 'CCTV + Kontrola Dostępu',
     d: 'Kamery 4K, KD, SSWiN, zasilanie PoE i rezerwa z UPS.',
     img: '/img/projects/example.jpg', alt: 'Kamery CCTV na obiekcie' },

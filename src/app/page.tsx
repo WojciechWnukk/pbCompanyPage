@@ -25,7 +25,6 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-[75%_center] md:object-[65%_center]"
           />
-          {/* overlay dla czytelności */}
           <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 md:via-white/60 to-transparent" />
         </div>
         <div className="relative z-10 wrap grid items-center gap-10 md:grid-cols-2">
@@ -67,7 +66,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Skrót usług z animacją przy przewijaniu */}
       <section id="services" className="section bg-gray-50">
         <div className="wrap">
           <h2 className="h2 mb-8">Co robimy</h2>
@@ -85,7 +83,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Realizacje – zajawka z animacją */}
       <section className="section">
         <div className="wrap">
           <div className="flex items-end justify-between gap-4 mb-6">
@@ -122,10 +119,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Kontakt – CTA */}
 <section id="kontakt" className="section bg-gray-50">
   <div className="wrap grid gap-10 md:grid-cols-2 items-start">
-    {/* LEWA KOLUMNA – dane firmy */}
     <div className="md:col-start-1 md:row-start-1 md:order-1">
       <h2 className="h2 mb-4">Skontaktuj się</h2>
       <p className="p">
@@ -139,7 +134,6 @@ export default function HomePage() {
       </p>
     </div>
 
-    {/* PRAWA KOLUMNA – formularz */}
     <div className="md:col-start-2 md:row-start-1 md:order-2">
       <ContactForm />
     </div>

@@ -7,11 +7,9 @@ type State = { ok: boolean; errors?: Record<string, string> }
 const initial: State = { ok: false, errors: {} }
 
 export default function ContactForm() {
-  // ⬇️ nowy hook zamiast useFormState/useFormStatus
   const [state, action, pending] = useActionState(sendContact, initial)
   const formRef = useRef<HTMLFormElement>(null)
 
-  // wyczyść formularz po sukcesie
   useEffect(() => {
     if (state.ok) formRef.current?.reset()
   }, [state.ok])

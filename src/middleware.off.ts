@@ -6,7 +6,6 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl
   const host = req.headers.get('host') ?? url.hostname
 
-  // Bezpieczeństwo: nie ruszaj localhostów i adresów prywatnych (gdybyś kiedyś odpalał prod lokalnie)
   const isLocal =
     host.startsWith('localhost') ||
     host.startsWith('127.0.0.1') ||
@@ -26,7 +25,7 @@ export function middleware(req: NextRequest) {
   return NextResponse.next()
 }
 
-// (opcjonalnie) nie uruchamiaj middleware dla zasobów statycznych
+// nie uruchamiaj middleware dla zasobów statycznych
 export const config = {
   matcher: ['/((?!_next|favicon.ico|manifest.webmanifest|robots.txt|sitemap.xml).*)'],
 }

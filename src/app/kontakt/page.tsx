@@ -1,4 +1,3 @@
-// src/app/kontakt/page.tsx
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import ContactForm from '@/app/ui/contact-form'
@@ -27,7 +26,6 @@ export default function ContactPage() {
 
   return (
     <main>
-      {/* HERO */}
       <section className="subhero">
         <div className="wrap">
           <span className="kicker">Kontakt</span>
@@ -38,10 +36,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* MAPA + DANE + FORMULARZ */}
       <section className="section">
         <div className="wrap grid gap-10 lg:grid-cols-2 items-start">
-          {/* lewa kolumna: dane + mapa */}
           <div className="space-y-6">
             <div className="card p-6 md:p-8">
               <h2 className="font-semibold text-xl">Dane firmy</h2>
@@ -71,10 +67,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Mapka – działa bez klucza (embed przez query) */}
             <div className="overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200 bg-white">
               <iframe
-              key={MAP_Q} // wymusza remount po zmianie
+              key={MAP_Q}
               title="PB PROJEKT — mapa dojazdu"
               src={`https://www.google.com/maps?q=${MAP_Q}&z=${MAP.zoom}&output=embed`}
               className="w-full aspect-[16/9] md:aspect-[4/3]"
@@ -93,14 +88,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* prawa kolumna: formularz (ten sam co na głównej) */}
           <div className="md:col-start-2 md:row-start-1">
             <ContactForm />
           </div>
         </div>
       </section>
 
-      {/* SEO: Organization + Breadcrumbs */}
       <Script
         id="ld-org"
         type="application/ld+json"
